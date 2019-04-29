@@ -1,6 +1,6 @@
 package com.zhangtao.zhangtao_common;
 
-import org.apache.commons.lang.StringUtils;
+import java.util.regex.Pattern;
 
 public class StringUtil {
 	//方法1：判断源字符串是否有值，空引号(空白字符串)也算没值 (5分)
@@ -53,6 +53,12 @@ public class StringUtil {
 				}
 				StringBuffer buffer = new StringBuffer(src);
 				return  buffer.reverse().toString();
+			}
+			
+			public  static boolean  isHttpUrl (String s){
+				Pattern pattern = Pattern.compile("^([hH][tT]{2}[pP]://|[hH][tT]{2}[pP][sS]://)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\\/])+$");
+				boolean matcher = pattern.matcher(s).matches();
+				return matcher;
 			}
 		
 }

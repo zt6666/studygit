@@ -1,6 +1,8 @@
 package com.zhangtao.zhangtao_common;
 
 
+import java.util.regex.Pattern;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
@@ -56,5 +58,11 @@ public class WebUtil {
 			}
 		   //  如果没有对应的 cookName的名字 返回null
 			return null;
+		}
+		
+		public  static boolean  isHttpUrl (String s){
+			Pattern pattern = Pattern.compile("^([hH][tT]{2}[pP]://|[hH][tT]{2}[pP][sS]://)(([A-Za-z0-9-~]+).)+([A-Za-z0-9-~\\/])+$");
+			boolean matcher = pattern.matcher(s).matches();
+			return matcher;
 		}
 }
